@@ -157,7 +157,7 @@ public class FABRIK : MonoBehaviour
     {
         Transform lsCurrentTransform        = this.transform;
 
-        for(int i = 0; i < m_ChainLength && lsCurrentTransform != null && lsCurrentTransform.parent != null; i++)
+        for(int i = 0; i < m_ChainLength && lsCurrentTransform != null; i++)
         {
             float lsScale                   = Vector3.Distance(lsCurrentTransform.position, lsCurrentTransform.parent.position) * 0.1f;
             Handles.matrix                  = Matrix4x4.TRS(lsCurrentTransform.position, Quaternion.FromToRotation(Vector3.up,
