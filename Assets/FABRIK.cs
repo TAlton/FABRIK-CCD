@@ -13,6 +13,7 @@ public class FABRIK : MonoBehaviour
     [SerializeField] protected float m_LimbLength;
     [SerializeField] protected Transform[] m_Joints;
     [SerializeField] protected Vector3[] m_Postions;
+    [SerializeField] protected float m_Delta;
 
     // Start is called before the first frame update
     void Start()
@@ -63,16 +64,44 @@ public class FABRIK : MonoBehaviour
 
         for(int i = 0; i < m_Joints.Length; i++)
         {
-            m_Postions[i]           = m_Joints[i].position;
+            m_Postions[i]               = m_Joints[i].position;
         }
         //checks if the target is reachable by the limb
         if ((m_TargetTransform.position - m_Joints[0].position).sqrMagnitude >= Mathf.Pow(m_LimbLength, 2))
         {
-            Vector3 lsDirection     = (m_TargetTransform.position - m_Postions[0]).normalized;
+            //not reachable
+            Vector3 lsDirection         = (m_TargetTransform.position - m_Postions[0]).normalized;
             
             for(int i = 1; i < m_Postions.Length; i++)
             {
-                m_Postions[i]       = m_Postions[i - 1] + lsDirection * m_BoneLengths[i - 1];
+                //the limb reaches for the target ending in a straight limb
+                m_Postions[i]           = m_Postions[i - 1] + lsDirection * m_BoneLengths[i - 1];
+            }
+
+        }  else
+        {
+            //reachable
+            for(int i = 0; i < m_Iterations; i++)
+            {
+                //backwards iteration
+                for(int ii = m_Postions.Length - 1; ii > 0; ii--)
+                {
+                    if(ii == m_Postions.Length - 1)
+                    {
+                        m_Postions[ii]   = m_TargetTransform.position;
+                    } else
+                    {
+                        //checking that the distances of joints are constrained to bone length
+                        m_Postions[ii]  = m_Postions[ii + 1] + (m_Postions[ii] - m_Postions[ii + 1]).normalized * m_BoneLengths[ii];
+                    }
+                }
+                //forward iteration
+                for(int ii = 1; ii < m_Postions.Length; ii++)
+                {
+                    m_Postions[ii]      = m_Postions[ii - 1] + (m_Postions[ii] - m_Postions[ii - 1]).normalized * m_BoneLengths[ii - 1];
+                }
+                //if distance from target and end effector is within our delta we break
+                if ((m_Postions[m_Postions.Length - 1] - m_TargetTransform.position).sqrMagnitude < Mathf.Pow(m_Delta, 2)) break;
             }
         }
 
