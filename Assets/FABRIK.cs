@@ -52,6 +52,35 @@ public class FABRIK : MonoBehaviour
     {
         
     }
+    private void LateUpdate()
+    {
+        ResolveFABRIK();
+    }
+    private void ResolveFABRIK()
+    {
+        if (null == m_TargetTransform) return;
+        if (m_BoneLengths.Length != m_ChainLength) Init();
+
+        for(int i = 0; i < m_Joints.Length; i++)
+        {
+            m_Postions[i]           = m_Joints[i].position;
+        }
+        //checks if the target is reachable by the limb
+        if ((m_TargetTransform.position - m_Joints[0].position).sqrMagnitude >= Mathf.Pow(m_LimbLength, 2))
+        {
+            Vector3 lsDirection     = (m_TargetTransform.position - m_Postions[0]).normalized;
+            
+            for(int i = 1; i < m_Postions.Length; i++)
+            {
+                m_Postions[i]       = m_Postions[i - 1] + lsDirection * m_BoneLengths[i - 1];
+            }
+        }
+
+        for(int i = 0; i < m_Postions.Length; i++)
+        {
+            m_Joints[i].position    = m_Postions[i];
+        }
+    }
     private void OnDrawGizmos()
     {
         Transform lsCurrentTransform    = this.transform;
