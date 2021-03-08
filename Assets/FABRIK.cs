@@ -129,6 +129,7 @@ public class FABRIK : MonoBehaviour
         //pole
         if(m_PoleTransform != null)
         {
+            //creates an angle axis for the joints based on the plane from the pole
             for(int i = 1; i < m_Positions.Length - 1; i++)
             {
                 Plane lsPlane               = new Plane(m_Positions[i + 1] - m_Positions[i - 1], m_Positions[i - 1]);
