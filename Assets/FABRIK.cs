@@ -13,7 +13,7 @@ public class FABRIK : MonoBehaviour
     [SerializeField] protected float m_LimbLength;
     [SerializeField] protected Transform[] m_Joints;
     [SerializeField] protected Vector3[] m_Positions;
-    [SerializeField] protected float m_Delta;
+    [SerializeField] protected float m_Epsilon;
     [SerializeField] Vector3[]  m_InitialDir;
     [SerializeField] Quaternion[]  m_InitialRotJoint;
     [SerializeField] Quaternion  m_InitialRotTarget;
@@ -122,7 +122,7 @@ public class FABRIK : MonoBehaviour
                     m_Positions[ii]         = m_Positions[ii - 1] + (m_Positions[ii] - m_Positions[ii - 1]).normalized * m_BoneLengths[ii - 1];
                 }
                 //if distance from target and end effector is within our delta we break
-                if ((m_Positions[m_Positions.Length - 1] - m_TargetTransform.position).sqrMagnitude < Mathf.Pow(m_Delta, 2)) break;
+                if ((m_Positions[m_Positions.Length - 1] - m_TargetTransform.position).sqrMagnitude < Mathf.Pow(m_Epsilon, 2)) break;
             }
         }
 
