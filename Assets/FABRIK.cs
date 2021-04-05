@@ -145,10 +145,10 @@ public class FABRIK : MonoBehaviour
         {
             if(i == m_Positions.Length - 1)
             {
-                m_Joints[i].rotation = m_TargetTransform.rotation * Quaternion.Inverse(m_InitialRotTarget) * m_InitialRotJoint[i];
+                m_Joints[i].rotation        = m_TargetTransform.rotation * Quaternion.Inverse(m_InitialRotTarget) * m_InitialRotJoint[i];
             } else
             {
-                m_Joints[i].rotation = Quaternion.FromToRotation(m_InitialDir[i], m_Positions[i + 1] - m_Positions[i]) * m_InitialRotJoint[i];
+                m_Joints[i].rotation        = Quaternion.FromToRotation(m_InitialDir[i], m_Positions[i + 1] - m_Positions[i]) * m_InitialRotJoint[i];
             }
 
             m_Joints[i].position            = m_Positions[i];

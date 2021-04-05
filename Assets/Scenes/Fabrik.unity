@@ -557,7 +557,7 @@ MonoBehaviour:
   m_LimbLength: 0
   m_Joints: []
   m_Positions: []
-  m_Delta: 0.001
+  m_Epsilon: 0
   m_InitialDir: []
   m_InitialRotJoint: []
   m_InitialRotTarget: {x: 0, y: 0, z: 0, w: 0}
@@ -1156,31 +1156,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4398146065261190967, guid: 1341a9a8a070ee74791d250f1cc55ae4, type: 3}
   m_PrefabInstance: {fileID: 2086958251}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2086958253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086958252}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be835a90f51a2d24c98a83aae3ddbde4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ChainLength: 0
-  m_Iterations: 0
-  m_TargetTransform: {fileID: 0}
-  m_PoleTransform: {fileID: 0}
-  m_BoneLengths: []
-  m_LimbLength: 0
-  m_Joints: []
-  m_Positions: []
-  m_Delta: 0
-  m_InitialDir: []
-  m_InitialRotJoint: []
-  m_InitialRotTarget: {x: 0, y: 0, z: 0, w: 0}
-  m_InitialRotRoot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2086958255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1176,7 @@ MonoBehaviour:
   m_LimbLength: 0
   m_Joints: []
   m_Positions: []
-  m_Delta: 0.05
+  m_Epsilon: 0.05
   m_InitialDir: []
   m_InitialRotJoint: []
   m_InitialRotTarget: {x: 0, y: 0, z: 0, w: 0}
