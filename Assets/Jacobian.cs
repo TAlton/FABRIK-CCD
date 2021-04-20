@@ -19,24 +19,30 @@ public class Jacobian : MonoBehaviour
     [SerializeField] Vector3[] m_InitialDir;
     [SerializeField] float[,] m_1;
     [SerializeField] float[,] m_2;
+    [SerializeField] float h;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        float[,] matrix =
-        {
-            {1, 2, 3 },
-            {4, 5, 6 },
-            {7, 8, 9 },
-            {10, 11, 12 },
-            {13, 14, 15 }
-        };
+        //test that matrix mult works
 
-        Vector3 test = new Vector3(1, 2, 3);
+        //float[,] matrix =
+        //{
+        //    {1, 2, 3 },
+        //    {4, 5, 6 },
+        //    {7, 8, 9 },
+        //    {10, 11, 12 },
+        //    {13, 14, 15 }
+        //};
 
+        //Vector3 test = new Vector3(1, 2, 3);
+        //float[] answer = MatrixMult(matrix, test);
+        //for(int i = 0; i < answer.GetLength(0); i++)
+        //{
+        //    Debug.Log(answer[i]);
+        //}
 
-        Debug.Log(MatrixMult(matrix, test));
     }
 
     private void Awake()
@@ -110,7 +116,7 @@ public class Jacobian : MonoBehaviour
         //        }
         //        else
         //        {
-                    
+
         //        }
         //    }
 
@@ -142,11 +148,10 @@ public class Jacobian : MonoBehaviour
                 float[,] lsDeltaOrientation = CalcOrientation();
                 for (int i = 0; i < m_Joints.Length - 1; i++)
                 {
-                    temp = new Vector3(lsDeltaOrientation[i, 0] * Time.fixedDeltaTime, lsDeltaOrientation[i, 1] * Time.fixedDeltaTime, lsDeltaOrientation[i, 2] * Time.fixedDeltaTime); //might have to convert to quaternions
-                    Vector3.Dot(temp, m_TargetTransform.position);
+                    temp = new Vector3(lsDeltaOrientation[i, 0] * Time.deltaTime, lsDeltaOrientation[i, 1] * Time.deltaTime, lsDeltaOrientation[i, 2] * Time.deltaTime); //might have to convert to quaternions
                     Quaternion temp_quat = Quaternion.Euler(temp);
                     //Quaternion fromTo = Quaternion.FromToRotation()
-                    m_Joints[i].rotation *= temp_quat;
+                    m_Joints[i].Rotate(temp);
 
                 }
 
@@ -193,7 +198,7 @@ public class Jacobian : MonoBehaviour
         {
             dist = m_Joints[m_Joints.Length - 1].transform.position - m_Joints[i].transform.position;
             //Zi x (Pe - Pi)
-            Vector3 lsTemp = Vector3.Cross(m_Joints[i].transform.forward.normalized, dist);
+            Vector3 lsTemp = Vector3.Cross(m_Joints[i].transform.up, dist);
             //column major
             lsJacobian[0, i] = lsTemp.x;
             lsJacobian[1, i] = lsTemp.y;
@@ -237,9 +242,9 @@ public class Jacobian : MonoBehaviour
 
         return argMatrix;
 
-        //for(int i = 0; i < argMatrix.GetLength(0); i++)
+        //for (int i = 0; i < argMatrix.GetLength(0); i++)
         //{
-        //    jacobian[i] = argMatrix[i, 0] * argMatrix[i, 1] * argMatrix[i, 2];
+        //    jacobian[i] = argMatrix[i, 0] + argMatrix[i, 1] + argMatrix[i, 2];
         //}
         //return jacobian;
     }

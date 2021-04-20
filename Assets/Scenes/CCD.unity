@@ -234,14 +234,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChainLength: 5
-  m_Iterations: 600
+  m_Iterations: 1
   m_TargetTransform: {fileID: 562299016}
   m_PoleTransform: {fileID: 0}
   m_BoneLengths: []
   m_LimbLength: 0
   m_Joints: []
   m_Positions: []
-  m_Epsilon: 0.05
+  m_Epsilon: 0.005
   m_InitialDir: []
   m_InitialRotJoint: []
   m_InitialRotTarget: {x: 0, y: 0, z: 0, w: 0}
