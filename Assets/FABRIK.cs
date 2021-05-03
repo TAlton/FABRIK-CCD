@@ -68,11 +68,11 @@ public class FABRIK : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ResolveFABRIK();
     }
     private void LateUpdate()
     {
-        ResolveFABRIK();
+        
     }
     private void ResolveFABRIK()
     {

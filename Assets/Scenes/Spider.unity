@@ -1147,6 +1147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a17224132cb5847916c7cfe5ad462b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forward_: 119
+  back_: 114
+  left_: 97
+  right_: 115
 --- !u!1 &559956533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,9 +1662,9 @@ GameObject:
   - component: {fileID: 975940846}
   - component: {fileID: 975940845}
   - component: {fileID: 975940844}
-  - component: {fileID: 975940847}
   - component: {fileID: 975940848}
   - component: {fileID: 975940849}
+  - component: {fileID: 975940847}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1808,6 +1812,7 @@ MonoBehaviour:
   py: 0
   pz: 0
   targets_: {fileID: 0}
+  height_offset: 1
 --- !u!54 &975940849
 Rigidbody:
   m_ObjectHideFlags: 0

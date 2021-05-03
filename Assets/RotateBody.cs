@@ -10,16 +10,17 @@ public class RotateBody : MonoBehaviour
     [SerializeField] GameObject BL_Effector;
     [SerializeField] GameObject BR_Effector;
     private int effector_count = 4;
-    private Vector3 avg_vector;
-	[SerializeField] private Vector4 avg_quat;
 	[SerializeField] private List<GameObject> list_effectors;
+<<<<<<< Updated upstream
     private Vector3 orientation_;
+=======
+    [SerializeField] public float x, y, z;
+>>>>>>> Stashed changes
     [SerializeField] public float px = 0;
     [SerializeField] public float py = 0;
     [SerializeField] public float pz = 0;
     [SerializeField] public Targets targets_;
-    Vector3[] left_legs;
-    Vector3[] right_legs;
+    [SerializeField] public float height_offset = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,6 @@ public class RotateBody : MonoBehaviour
         list_effectors.Add(FR_Effector);
         list_effectors.Add(BL_Effector);
         list_effectors.Add(BR_Effector);
-        left_legs = new Vector3[] { FL_Effector.transform.position, BL_Effector.transform.position };
-        right_legs = new Vector3[] { FR_Effector.transform.position, BR_Effector.transform.position };
         targets_ = this.GetComponent<Targets>();
     }
 
@@ -44,9 +43,9 @@ public class RotateBody : MonoBehaviour
 
         py /= effector_count;
 
-        this.transform.position = new Vector3(this.transform.position.x, py + 1, this.transform.position.z);
-        targets_.UpdateTargets();
+        this.transform.parent.position = new Vector3(this.transform.position.x, py + height_offset, this.transform.position.z);
 
+        targets_.UpdateTargets();
         py = 0;
        
     }
