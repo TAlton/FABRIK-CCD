@@ -11,11 +11,6 @@ public class RotateBody : MonoBehaviour
     [SerializeField] GameObject BR_Effector;
     private int effector_count = 4;
 	[SerializeField] private List<GameObject> list_effectors;
-<<<<<<< Updated upstream
-    private Vector3 orientation_;
-=======
-    [SerializeField] public float x, y, z;
->>>>>>> Stashed changes
     [SerializeField] public float px = 0;
     [SerializeField] public float py = 0;
     [SerializeField] public float pz = 0;
