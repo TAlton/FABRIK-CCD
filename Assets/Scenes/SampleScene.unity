@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086958252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be835a90f51a2d24c98a83aae3ddbde4, type: 3}
   m_Name: 
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_LimbLength: 0
   m_Joints: []
   m_Positions: []
-  m_Delta: 0
+  m_Delta: 0.05
   m_InitialDir: []
   m_InitialRotJoint: []
   m_InitialRotTarget: {x: 0, y: 0, z: 0, w: 0}

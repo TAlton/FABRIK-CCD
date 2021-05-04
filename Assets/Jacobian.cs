@@ -150,7 +150,7 @@ public class Jacobian : MonoBehaviour
                 {
                     temp = new Vector3(lsDeltaOrientation[i, 0] * Time.deltaTime, lsDeltaOrientation[i, 1] * Time.deltaTime, lsDeltaOrientation[i, 2] * Time.deltaTime); //might have to convert to quaternions
                     Quaternion temp_quat = Quaternion.Euler(temp);
-                    //Quaternion fromTo = Quaternion.FromToRotation()
+                    //Quaternion fromTo = Quaternion.FromToRotation
                     m_Joints[i].Rotate(temp);
 
                 }
@@ -198,7 +198,7 @@ public class Jacobian : MonoBehaviour
         {
             dist = m_Joints[m_Joints.Length - 1].transform.position - m_Joints[i].transform.position;
             //Zi x (Pe - Pi)
-            Vector3 lsTemp = Vector3.Cross(m_Joints[i].transform.right, dist);
+            Vector3 lsTemp = Vector3.Cross(m_Joints[i].transform.forward, dist);
             //column major
             lsJacobian[0, i] = lsTemp.x;
             lsJacobian[1, i] = lsTemp.y;

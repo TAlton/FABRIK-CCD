@@ -85,7 +85,7 @@ public class FABRIK : MonoBehaviour
         }
 
         Quaternion lsRootRot                = (m_Joints[0].parent != null) ? m_Joints[0].parent.rotation : Quaternion.identity;
-        Quaternion lsRotDelta               = lsRootRot * Quaternion.Inverse(m_InitialRotRoot);
+        //Quaternion lsRotDelta               = lsRootRot * Quaternion.Inverse(m_InitialRotRoot);
 
         //checks if the target is reachable by the limb
         if ((m_TargetTransform.position - m_Joints[0].position).sqrMagnitude >= Mathf.Pow(m_LimbLength, 2))
